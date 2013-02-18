@@ -3,7 +3,7 @@ import Keys._
 
 object UtilSlickBuild extends Build {
   val sharedSettings = Seq(
-    version := "0.1.0-SNAPSHOT",
+    version := "0.1.0",
     organization := "org.sazabi",
     scalaVersion := "2.10.0",
     scalacOptions ++= Seq(
