@@ -21,8 +21,8 @@ trait Implicits { db: DB =>
         db.trying(f)(self)
       }
 
-      def retrying[A](level: IsolationLevel)
-        (f: => A): Future[A] = futurePool {
+      def retrying[A](level: IsolationLevel)(f: => A): Future[A] =
+        futurePool {
           db.trying(level, f)(self)
         }
     }

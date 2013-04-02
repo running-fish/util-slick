@@ -3,9 +3,9 @@ import Keys._
 
 object UtilSlickBuild extends Build {
   val sharedSettings = Seq(
-    version := "0.1.0",
+    version := "0.2.0-SNAPSHOT",
     organization := "org.sazabi",
-    scalaVersion := "2.10.0",
+    scalaVersion := "2.10.1",
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",
@@ -16,7 +16,7 @@ object UtilSlickBuild extends Build {
       "twitter" at "http://maven.twttr.com"
     ),
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2" % "1.13" % "test"
+      "org.specs2" %% "specs2" % "1.14" % "test"
     )
   )
 
@@ -24,7 +24,7 @@ object UtilSlickBuild extends Build {
     "util-slick-all",
     file("."),
     settings = Project.defaultSettings ++ Seq(
-      scalaVersion := "2.10.0",
+      scalaVersion := "2.10.1",
       publish := {},
       publishLocal := {}
     )
@@ -38,7 +38,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-core",
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "6.2.0" % "compile",
+      "com.twitter" %% "util-core" % "6.2.4" % "compile",
       "com.typesafe.slick" %% "slick" % "1.0.0" % "compile"
     )
   )
@@ -50,8 +50,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.json4s" %% "json4s-native" % "3.1.0" % "compile",
-      "org.sazabi" %% "util-json" % "0.5.0" % "compile"
+      "org.sazabi" %% "util-json" % "0.6.0" % "compile"
     )
   ).dependsOn(core)
 
