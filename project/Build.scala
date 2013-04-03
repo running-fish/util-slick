@@ -1,6 +1,8 @@
 import sbt._
 import Keys._
 
+import com.typesafe.sbt.SbtPgp.PgpKeys._
+
 object UtilSlickBuild extends Build {
   val sharedSettings = Seq(
     version := "0.1.1",
@@ -11,22 +13,49 @@ object UtilSlickBuild extends Build {
       "-deprecation",
       "-feature"
     ),
-    resolvers ++= Seq(
-      Resolver.url("My github releases", url("http://solar.github.com/ivy2/releases/"))(Resolver.ivyStylePatterns),
-      "twitter" at "http://maven.twttr.com"
-    ),
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2" % "1.14" % "test"
-    )
+    ),
+    useGpg := true,
+    publishMavenStyle := true,
+    publishTo <<= version { (v: String) =>
+      val nexus = "https://oss.sonatype.org/"
+      if (v.trim.endsWith("SNAPSHOT"))
+        Some("snapshots" at nexus + "content/repositories/snapshots")
+      else
+        Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    },
+    publishArtifact in Test := false,
+    pomIncludeRepository := { _ => false },
+    pomExtra := (
+      <url>https://github.com/solar/util-slick</url>
+      <licenses>
+        <license>
+          <name>Apache 2</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt"</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+      <scm>
+        <url>git@github.com:solar/util-slick.git</url>
+        <connection>scm:git:git@github.com:solar/util-slick.git</connection>
+      </scm>
+      <developers>
+        <developer>
+          <id>solar</id>
+          <name>Shinpei Okamura</name>
+          <url>https://github.com/solar</url>
+        </developer>
+      </developers>)
   )
 
   lazy val all = Project(
     "util-slick-all",
     file("."),
-    settings = Project.defaultSettings ++ Seq(
-      scalaVersion := "2.10.1",
+    settings = Project.defaultSettings ++ sharedSettings ++ Seq(
       publish := {},
-      publishLocal := {}
+      publishLocal := {},
+      publishSigned := {}
     )
   ).aggregate(core, json, scalendar)
 
