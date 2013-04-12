@@ -13,6 +13,7 @@ object UtilSlickBuild extends Build {
       "-deprecation",
       "-feature"
     ),
+    resolvers += "Sonatype snapshot" at "http://oss.sonatype.org/content/repositories/snapshots/",
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2" % "1.14" % "test"
     ),
@@ -67,7 +68,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-core",
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "6.2.4" % "compile",
+      "com.twitter" %% "util-core" % "6.3.0" % "compile",
       "com.typesafe.slick" %% "slick" % "1.0.0" % "compile"
     )
   )
@@ -79,7 +80,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.sazabi" %% "util-json" % "0.6.0" % "compile"
+      "org.sazabi" %% "util-json" % "0.7.0" % "compile"
     )
   ).dependsOn(core)
 
