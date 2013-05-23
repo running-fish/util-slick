@@ -5,7 +5,7 @@ import com.typesafe.sbt.SbtPgp.PgpKeys._
 
 object UtilSlickBuild extends Build {
   val sharedSettings = Seq(
-    version := "0.1.2",
+    version := "0.1.3",
     organization := "org.sazabi",
     scalaVersion := "2.10.1",
     scalacOptions ++= Seq(
@@ -13,7 +13,10 @@ object UtilSlickBuild extends Build {
       "-deprecation",
       "-feature"
     ),
-    resolvers += "Sonatype snapshot" at "http://oss.sonatype.org/content/repositories/snapshots/",
+    resolvers ++= Seq(
+      Resolver.sonatypeRepo("releases"),
+      Resolver.sonatypeRepo("snapshots")
+    ),
     libraryDependencies ++= Seq(
       "org.specs2" %% "specs2" % "1.14" % "test"
     ),
@@ -58,8 +61,18 @@ object UtilSlickBuild extends Build {
       publishLocal := {},
       publishSigned := {}
     )
-  ).aggregate(core, json, scalendar)
+  ).aggregate(bijection, core, json, scalendar)
 
+  lazy val bijection = Project(
+    "util-slick-bijection",
+    file("bijection"),
+    settings = Project.defaultSettings ++ sharedSettings
+  ).settings(
+    name := "util-slick-bijection",
+    libraryDependencies ++= Seq(
+      "com.twitter" %% "bijection-core" % "0.4.0" % "compile"
+    )
+  ).dependsOn(core)
 
   lazy val core = Project(
     "util-slick-core",
@@ -68,7 +81,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-core",
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "6.3.0" % "compile",
+      "com.twitter" %% "util-core" % "6.3.4" % "compile",
       "com.typesafe.slick" %% "slick" % "1.0.0" % "compile"
     )
   )
@@ -80,7 +93,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.sazabi" %% "util-json" % "0.7.0" % "compile"
+      "org.sazabi" %% "util-json" % "0.8.0" % "compile"
     )
   ).dependsOn(core)
 
