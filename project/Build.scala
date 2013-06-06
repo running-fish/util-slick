@@ -82,7 +82,7 @@ object UtilSlickBuild extends Build {
     name := "util-slick-core",
     libraryDependencies ++= Seq(
       "com.twitter" %% "util-core" % "6.3.4" % "compile",
-      "com.typesafe.slick" %% "slick" % "1.0.0" % "compile"
+      "com.typesafe.slick" %% "slick" % "1.0.1" % "compile"
     )
   )
 
@@ -93,7 +93,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.sazabi" %% "util-json" % "0.8.0" % "compile"
+      "org.sazabi" %% "util-json" % "0.8.1" % "compile"
     )
   ).dependsOn(core)
 
