@@ -81,7 +81,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-core",
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "6.3.4" % "compile",
+      "com.twitter" %% "util-core" % "6.3.5" % "compile",
       "com.typesafe.slick" %% "slick" % "1.0.1" % "compile"
     )
   )
