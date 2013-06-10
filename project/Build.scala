@@ -7,7 +7,7 @@ object UtilSlickBuild extends Build {
   val sharedSettings = Seq(
     version := "0.2.0-SNAPSHOT",
     organization := "org.sazabi",
-    scalaVersion := "2.10.1",
+    scalaVersion := "2.10.2",
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",
