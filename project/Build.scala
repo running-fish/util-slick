@@ -5,9 +5,9 @@ import com.typesafe.sbt.SbtPgp.PgpKeys._
 
 object UtilSlickBuild extends Build {
   val sharedSettings = Seq(
-    version := "0.1.3",
+    version := "0.1.4",
     organization := "org.sazabi",
-    scalaVersion := "2.10.1",
+    scalaVersion := "2.10.2",
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",
@@ -18,7 +18,7 @@ object UtilSlickBuild extends Build {
       Resolver.sonatypeRepo("snapshots")
     ),
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2" % "1.14" % "test"
+      "org.specs2" %% "specs2" % "1.14.1-SNAPSHOT" % "test"
     ),
     useGpg := true,
     publishMavenStyle := true,
@@ -81,8 +81,8 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-core",
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "6.3.4" % "compile",
-      "com.typesafe.slick" %% "slick" % "1.0.0" % "compile"
+      "com.twitter" %% "util-core" % "6.3.5" % "compile",
+      "com.typesafe.slick" %% "slick" % "1.0.1" % "compile"
     )
   )
 
@@ -93,7 +93,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.sazabi" %% "util-json" % "0.8.0" % "compile"
+      "org.sazabi" %% "util-json" % "0.8.2" % "compile"
     )
   ).dependsOn(core)
 
