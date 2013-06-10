@@ -18,7 +18,7 @@ object UtilSlickBuild extends Build {
       Resolver.sonatypeRepo("snapshots")
     ),
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2" % "1.14" % "test"
+      "org.specs2" %% "specs2" % "1.14.1-SNAPSHOT" % "test"
     ),
     useGpg := true,
     publishMavenStyle := true,
@@ -93,7 +93,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.sazabi" %% "util-json" % "0.8.1" % "compile"
+      "org.sazabi" %% "util-json" % "0.8.2" % "compile"
     )
   ).dependsOn(core)
 
