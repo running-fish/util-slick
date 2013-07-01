@@ -14,11 +14,11 @@ object UtilSlickBuild extends Build {
       "-feature"
     ),
     resolvers ++= Seq(
-      Resolver.sonatypeRepo("releases"),
-      Resolver.sonatypeRepo("snapshots")
+      Resolver.sonatypeRepo("snapshots"),
+      Resolver.sonatypeRepo("releases")
     ),
     libraryDependencies ++= Seq(
-      "org.specs2" %% "specs2" % "1.14.1-SNAPSHOT" % "test"
+      "org.specs2" %% "specs2" % "2.0" % "test"
     ),
     useGpg := true,
     publishMavenStyle := true,
@@ -81,7 +81,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-core",
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "6.3.5" % "compile",
+      "com.twitter" %% "util-core" % "6.3.7" % "compile",
       "com.typesafe.slick" %% "slick" % "1.0.1" % "compile"
     )
   )
@@ -93,7 +93,7 @@ object UtilSlickBuild extends Build {
   ).settings(
     name := "util-slick-json",
     libraryDependencies ++= Seq(
-      "org.sazabi" %% "util-json" % "0.8.2" % "compile"
+      "org.sazabi" %% "util-json" % "0.9.0" % "compile"
     )
   ).dependsOn(core)
 
