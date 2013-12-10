@@ -6,8 +6,8 @@ import java.sql.SQLTransactionRollbackException
 
 import scala.annotation.tailrec
 
+import slick.driver.JdbcDriver.simple._
 import slick.jdbc.{StaticQuery => Q}
-import slick.session.{Database, Session}
 
 trait DB {
   val futurePool: FuturePool

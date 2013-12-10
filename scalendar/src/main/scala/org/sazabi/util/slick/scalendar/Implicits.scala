@@ -5,8 +5,12 @@ import java.sql.{Date, Timestamp}
 import scalendar.Scalendar
 
 import slick.jdbc.{GetResult, SetParameter}
-import slick.lifted.MappedTypeMapper
-import slick.session.PositionedParameters
+
+import slick.jdbc.PositionedParameters
+
+import slick.ast.BaseTypedType
+import slick.driver.JdbcDriver.simple._
+import slick.jdbc.{JdbcType, MappedJdbcType}
 
 trait Implicits {
   implicit val setScalendar = SetParameter {
@@ -16,7 +20,7 @@ trait Implicits {
 
   implicit val getScalendar = GetResult(r => invert(r.nextTimestamp()))
 
-  implicit val scalendarMapper = MappedTypeMapper.base[Scalendar, Timestamp](
+  implicit val scalendarMapper = MappedJdbcType.base[Scalendar, Timestamp](
     convert, invert
   )
 

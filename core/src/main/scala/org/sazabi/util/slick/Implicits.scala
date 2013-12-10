@@ -2,8 +2,8 @@ package org.sazabi.util.slick
 
 import com.twitter.util.Future
 
-import slick.jdbc.{GetResult, SetParameter}
-import slick.session.{PositionedParameters, Session => SlickSession}
+import slick.driver.JdbcDriver.simple.{Session => SlickSession, _}
+import slick.jdbc.{GetResult, PositionedParameters, SetParameter}
 
 trait Implicits { db: DB =>
   object Imports {
